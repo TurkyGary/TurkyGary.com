@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Turky Gary — Portfolio</title>
+  <meta name="description" content="Portfolio of Turky Gary — Cloud Computing, IoT, Embedded Systems, Computer Networking, and Cybersecurity." />
+  <meta name="theme-color" content="#0F9D58" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Tajawal:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;700&display=swap">
+  <style>
+    :root{
+      --primary: #0F9D58;
+      --secondary: #4285F4;
+      --accent1: #F4B400;
+      --accent2: #DB4437;
+      --bg-gradient: linear-gradient(135deg, #0F9D58, #4285F4 40%, #F4B400 80%);
+      --surface: #FFFFFF;
+      --text: #202124;
+      --muted: #5F6368;
+      --shadow: 0 10px 30px rgba(0,0,0,.15);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family: "Tajawal", "Cairo", "Noto Sans Arabic", "Roboto", sans-serif;color:var(--text);background:var(--bg-gradient);min-height:100vh}
+    header{background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+    .navwrap{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:auto;padding:1rem}
+    nav a{color:var(--text);text-decoration:none;font-weight:500;margin:0 .5rem}
+    nav a:hover{color:var(--primary)}
+    .lang-toggle{border:none;background:var(--primary);color:#fff;border-radius:999px;padding:.4rem .8rem;cursor:pointer}
+    .hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-evenly;max-width:1200px;margin:auto;padding:2rem;color:#fff}
+    .hero-text{max-width:600px}
+    .profile-pic{width:250px;height:250px;border-radius:50%;border:5px solid #fff;object-fit:cover;box-shadow:var(--shadow);}
+    [dir="rtl"] .profile-pic{transform: scaleX(-1);}
+    .chips{margin-top:.8rem;display:flex;flex-wrap:wrap;gap:.5rem}
+    .chip{background:rgba(255,255,255,0.2);padding:.3rem .7rem;border-radius:999px;font-size:.85rem}
+    section{max-width:1200px;margin:auto;padding:2rem;color:#fff}
+    h2{margin-bottom:1rem}
+    .icon-pic{width:100px;height:100px;border-radius:50%;border:0px solid #fff;object-fit:cover;box-shadow:var(--shadow)}
+    .small-pic{width:100px;height:100px;border:0px solid #fff;object-fit:scale-down;}
+    .project_pic{display: grid;justify-content: center;}
+    .project_title{display: grid;justify-content: center; color: darkred;}
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+    .card{background:var(--surface);display: grid;color:var(--text);border-radius:16px;padding:1rem;box-shadow:var(--shadow)}
+    footer{text-align:center;padding:1rem;background:rgba(255,255,255,0.1);color:#fff}
+    /* Scroll-to-top button */
+    .to-top{position:fixed;right:20px;bottom:20px;width:48px;height:48px;border-radius:999px;border:1px solid rgba(0,0,0,.06);background:#fff;color:#1A73E8;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.18);opacity:0;transform:translateY(10px);transition:opacity .25s ease, transform .25s ease;pointer-events:none;z-index:60}
+    .to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    .to-top svg{width:20px;height:20px}
+    @media (max-width:480px){.to-top{right:16px;bottom:16px;width:44px;height:44px}}
+    /* Affiliations */
+    .affiliation-grid{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:.75rem}
+    .affiliation{position:relative;display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .75rem;border-radius:999px;border:3px solid #e0e3e7;background:#ffffff33;color:#1A73E8;text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.08);transition:transform .18s ease, box-shadow .18s ease}
+    .affiliation:hover,.affiliation:focus-visible{transform:translateY(-2px) scale(1.06);box-shadow:0 10px 28px rgba(0,0,0,.16)}
+    .affiliation:focus-visible{outline:3px solid rgba(26,115,232,.25);outline-offset:2px}
+    .affiliation::after{content:attr(data-title);position:absolute;left:50%;bottom:calc(100% + 10px);transform:translate(-50%,-6px);opacity:0;pointer-events:none;background:#fff;color:#202124;border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:.4rem .6rem;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.18);transition:opacity .15s ease, transform .15s ease;z-index:40}
+    .affiliation::before{content:"";position:absolute;left:50%;bottom:100%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#fff;filter:drop-shadow(0 -1px 0 rgba(0,0,0,.12));opacity:0;transition:opacity .15s ease}
+    /* .affiliation:hover::after,.affiliation:focus-visible::after{opacity:1;transform:translate(-50%,0)}
+    .affiliation:hover::before,.affiliation:focus-visible::before{opacity:1} */
+  </style>
+  <!-- Site icon -->
+  <!-- <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20stop-color%3D%27%230F9D58%27/%3E%3Cstop%20offset%3D%270.5%27%20stop-color%3D%27%234285F4%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23F4B400%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2714%27%20fill%3D%27white%27/%3E%3Ccircle%20cx%3D%2732%27%20cy%3D%2732%27%20r%3D%2722%27%20fill%3D%27none%27%20stroke%3D%27url(%23g)%27%20stroke-width%3D%2710%27/%3E%3Ccircle%20cx%3D%2732%27%20cy%3D%2732%27%20r%3D%276%27%20fill%3D%27%23DB4437%27/%3E%3C/svg%3E"> -->
+  <!-- Optional fallbacks if you add files later -->
+  <link rel="icon" sizes="32x32" href="./img/icns/favicon_32.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/icns/favicon_180.png">
+</head>
+<body>
+<header>
+  <div class="navwrap">
+    <div class="brand" data-i18n="brand"></div>
+    <nav>
+      <a href="#about" data-i18n="about"></a>
+      <a href="#skills" data-i18n="skills"></a>
+      <a href="#experience" data-i18n="experience"></a>
+      <a href="#projects" data-i18n="projects"></a>
+      <a href="#contact" data-i18n="contact" style="visibility: hidden;"></a>
+    </nav>
+    <button class="lang-toggle" id="btnLang"></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <center>
+      <img src="./img/p/profile25.png" alt="Profile Picture" class="profile-pic">
+      <h2 data-i18n="brand"></h2>
+    </center>
+  </div>
+  <div class="hero-text">
+    <h1 data-i18n="heroTitle"></h1>
+    <p data-i18n="heroDesc"></p>
+    <div class="chips">
+      <span class="chip" data-i18n="chipCloud"></span>
+      <span class="chip" data-i18n="chipIoT"></span>
+      <span class="chip" data-i18n="chipEmbedded"></span>
+      <span class="chip" data-i18n="chipNetworking"></span>
+      <span class="chip" data-i18n="chipCyber"></span>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 data-i18n="about"></h2>
+  <p data-i18n="aboutText"></p>
+</section>
+
+<section id="skills">
+  <h2 data-i18n="skills"></h2>
+  <ul>
+    <li data-i18n="skill1"></li>
+    <li data-i18n="skill2"></li>
+    <li data-i18n="skill3"></li>
+    <li data-i18n="skill4"></li>
+    <li data-i18n="skill5"></li>
+  </ul>
+  <div class="card-grid">
+    <div>
+      <a href="https://www.credly.com/users/turkygary" target="_self"><img src="./img/icns/credly_icon.png" alt="Credly" class="icon-pic"></a>
+      <a href="https://www.cloudskillsboost.google/public_profiles/91b665d9-3830-413e-9cdd-d24e80c35e9a" target="_self"><img src="./img/icns/gcp_icon.png" alt="Google_Cloud" class="icon-pic"></a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2 data-i18n="experience"></h2>
+  <p data-i18n="experienceText"></p>
+</section>
+
+<section id="Affiliations">
+  <h2 data-i18n="Affiliations"></h2>
+  <div class="affiliation-grid">
+    <a class="affiliation" id="KAU" href="https://kau.edu.sa" target="_blank" rel="noopener"><img src="./img/affil/kau.png"></a>
+    <a class="affiliation" id="SEU" href="https://seu.edu.sa" target="_blank" rel="noopener"><img src="./img/affil/seu.png"></a>
+    <a class="affiliation" id="SEU" href="https://csuglobal.edu" target="_blank" rel="noopener"><img src="./img/affil/csug.png"></a>
+    <a class="affiliation" id="SCE" href="https://www.saudieng.sa" target="_blank" rel="noopener"><img src="./img/affil/sce.png"></a>
+    <a class="affiliation" id="IEEE" href="https://www.ieee.org" target="_blank" rel="noopener"><img src="./img/affil/ieee.png"></a>
+    <a class="affiliation" id="Raed" href="https://raed.com.sa/public-profile/3cdabe9b-2309-44d6-8735-5dc0b2d5e2ab" target="_blank" rel="noopener"><img src="./img/affil/raed.png"></a>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 data-i18n="projects"></h2>
+  <div class="card-grid">
+    <div class="card"><h3 class="project_title" data-i18n="projectTitle1"></h3><a href="https://ee.kau.edu.sa" target="_blank" class="project_pic"><img src="./img/affil/eekau.png" alt="EE_KAU" class="small-pic"></a><p data-i18n="projectText1"></p></div>
+    <div class="card" style="visibility: hidden;"><h3 class="project_title" data-i18n="projectTitle2"></h3><a href="https://" target="_blank" class="project_pic"><img src="./img/" alt="" class="small-pic"></a><p data-i18n="projectText2"></p></div>
+    <div class="card" style="visibility: hidden;"><h3 class="project_title" data-i18n="projectTitle3"></h3><a href="https://" target="_blank" class="project_pic"><img src="./img/" alt="" class="small-pic"></a><p data-i18n="projectText3"></p></div>
+    <div class="card" style="visibility: hidden;"><h3 class="project_title" data-i18n="projectTitle4"></h3><a href="https://" target="_blank" class="project_pic"><img src="./img/" alt="" class="small-pic"></a><p data-i18n="projectText4"></p></div>
+    <div class="card" style="visibility: hidden;"><h3 class="project_title" data-i18n="projectTitle5"></h3><a href="https://" target="_blank" class="project_pic"><img src="./img/" alt="" class="small-pic"></a><p data-i18n="projectText5"></p></div>
+  </div>
+</section>
+
+<section id="contact" style="visibility: hidden;">
+  <h2 data-i18n="contact"></h2>
+  <p>Email: you@example.com</p>
+</section>
+
+<footer>
+  © <span id="year"></span> <span data-i18n="brand"></span>
+</footer>
+
+ <!-- Scroll to top button -->
+ <button id="toTop" class="to-top" aria-label="Back to top" title="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"/>
+    <path d="M6 11l6-6 6 6"/>
+  </svg>
+</button>
+
+<script>
+  document.getElementById('year').textContent=new Date().getFullYear();
+  const dict = {
+    en: {brand:"Turky Gary",
+         about:"About",
+         skills:"Skills",
+         experience:"Experience",
+         Affiliations:"Affiliations",
+         projects:"Projects",
+         contact:"Contact",
+         heroTitle:"My mission is pioneering solutions at the convergence of Cloud Computing, Embedded Systems, and Secure Networking.",
+         heroDesc:"Experienced  professional engineer delivering secure, scalable, and efficient technology solutions across multiple domains.",
+         chipCloud:"Cloud Computing",
+         chipIoT:"IoT",
+         chipEmbedded:"Embedded Systems",
+         chipNetworking:"Computer Networking",
+         chipCyber:"Cybersecurity",
+         aboutText:"I integrate expertise in cloud architecture, IoT solutions, embedded system design, and network engineering with strong cybersecurity practices to build and secure modern infrastructures.",
+         skill1:"Cloud Platforms: GCP",
+         skill2:"IoT Development & Protocols",
+         skill3:"Embedded Systems: PIC, ESP32",
+         skill4:"Computer Networking & Security",
+         skill5:"Cybersecurity & Penetration Testing",
+         experienceText:"Extensive track record in delivering engineering training, implementing secure cloud infrastructures, IoT deployments, and embedded applications.", 
+         projectTitle1:"KAU-ECE Web Portal", 
+         projectText1:"Developed a centralized web portal for KAU's Electrical and Computer Engineering department, streamlining academic information and communication channels, enhancing resource accessibility and communication between students and faculty."
+        },
+    ar: {brand:"تركي قاري",
+         about:"نبذة",
+         skills:"المهارات",
+         experience:"الخبرات",
+         Affiliations:"أنتمي إلى",
+         projects:"المشاريع",
+         contact:"اتصل بي",
+         heroTitle:"مهمتي هي ابتكار حلول رائدة تجمع بين الحوسبة السحابية، والأنظمة المدمجة، والشبكات الآمنة.",
+         heroDesc:"مهندس خبير في تقديم حلول تقنية آمنة وقابلة للتوسع وفعالة عبر مجالات متعددة.",
+         chipCloud:"الحوسبة السحابية",
+         chipIoT:"إنترنت الأشياء",
+         chipEmbedded:"الأنظمة المدمجة",
+         chipNetworking:"شبكات الحاسب",
+         chipCyber:"الأمن السيبراني",
+         aboutText:"أدمج الخبرة في هندسة السحابة لتقديم حلول إنترنت الأشياء وتصميم الأنظمة المضمنة وشبكات الحاسب مع ممارسات قوية في الأمن السيبراني لبناء وتأمين البنى التحتية الحديثة.",
+         skill1:"منصات السحابة: GCP",
+         skill2:"تطوير إنترنت الأشياء وبروتوكولاته",
+         skill3:"الأنظمة المدمجة: PIC, ESP32",
+         skill4:"شبكات الحاسوب وأمن الشبكات",
+         skill5:"الأمن السيبراني واختبار الاختراق",
+         experienceText:"التدريب الهندسي وتنفيذ البنى التحتية السحابية الآمنة، ونشر حلول إنترنت الأشياء، والتطبيقات المدمجة.", 
+         projectTitle1:"البوابة الإلكترونية لـ KAU-ECE", 
+         projectText1:"تم تطوير بوابة إلكترونية لقسم الهندسة الكهربائية وهندسة الحاسبات بجامعة الملك عبد العزيز، مما أدى إلى تبسيط الوصول للمعلومات الأكاديمية وتوحيد قنوات الاتصال، وتعزيز سهولة الوصول للموارد والتواصل بين الطلاب وأعضاء هيئة التدريس."
+        }
+  };
+  let currentLang = 'en';
+  
+  function applyLang(lang){
+    currentLang = lang;
+    const root = document.documentElement;
+    root.lang = lang;
+    root.dir = (lang === 'en') ? 'ltr' : 'rtl';
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const txt = dict[lang][key];
+      if (txt) el.textContent = txt;
+    });
+
+    document.querySelectorAll('.lang-toggle').forEach(btn => {
+      const label = (lang === 'ar') ? 'EN' : 'AR';
+      btn.textContent = label;
+      btn.setAttribute('aria-pressed', String(lang === 'ar'));
+    });
+  }
+
+  function toggleLang(){
+    const next = (currentLang === 'en') ? 'ar' : 'en';
+    applyLang(next);
+    try { localStorage.setItem('lang', next); } catch (_) {}
+  }
+
+  document.getElementById('btnLang').addEventListener('click',()=>{
+    currentLang = currentLang==='en'?'ar':'en';
+    document.documentElement.lang = currentLang;
+    document.documentElement.dir = currentLang==='ar'?'rtl':'ltr';
+    for(const [key,val] of Object.entries(dict[currentLang])){
+      document.querySelectorAll(`[data-i18n="${key}"]`).forEach(el=>el.textContent=val);
+    }
+    document.getElementById('btnLang').textContent = currentLang==='en'?'AR':'EN';
+  });
+
+  // Detect initial language: saved > browser > default en
+  (function initLang(){
+    let initial = 'en';
+    try {
+      const saved = localStorage.getItem('lang');
+      if (saved === 'en' || saved === 'ar') initial = saved;
+      else {
+        const pref = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+        if (String(pref).toLowerCase().startsWith('ar')) initial = 'ar';
+      }
+    } catch (_) {}
+    applyLang(initial);
+  })();
+
+  // --- Scroll to top ---
+  (function(){
+    const btn = document.getElementById('toTop');
+    if(!btn) return;
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let ticking = false;
+    function update(){
+      const show = window.scrollY > 300; // show after scrolling down a bit
+      if(show) btn.classList.add('show'); else btn.classList.remove('show');
+      ticking = false;
+    }
+    window.addEventListener('scroll', ()=>{
+      if(!ticking){
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, {passive:true});
+    update();
+    btn.addEventListener('click', ()=>{
+      if(prefersReduced) window.scrollTo(0,0);
+      else window.scrollTo({top:0, behavior:'smooth'});
+    });
+  })();
+</script>
+</body>
+</html>
